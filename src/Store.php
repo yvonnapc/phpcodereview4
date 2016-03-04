@@ -29,9 +29,7 @@ class Store
   }
   static function getAll()
   {
-    $returned_stores = $GLOBALS['DB']->query(
-    "SELECT * FROM stores;"
-    );
+    $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
     $stores = array();
     foreach($returned_stores as $store){
       $name = $store['name'];
@@ -47,14 +45,14 @@ class Store
   }
   static function find($search_id)
   {
-    $found_store = null;
-    $stores = Store::getAll();
-    foreach($stores as $store){
-      $store_id = $store->getId();
-      if($store_id == $search_id){
-        $found_store = $store;
-      }
-    } return $found_store;
+      $found_store = null;
+      $stores = Store::getAll();
+      foreach($stores as $store){
+        $store_id = $store->getId();
+        if($store_id == $search_id){
+          $found_store = $store;
+        }
+      } return $found_store;
   }
 }
 

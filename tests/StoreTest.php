@@ -50,7 +50,7 @@
       $test_store->save();
       $result = Store::getAll();
       //Assert
-      $this->assertEquals($test_store, $result[0]);
+      $this->assertEquals([$test_store], $result);
     }
     function test_getAll()
     {
