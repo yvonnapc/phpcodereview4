@@ -61,6 +61,10 @@ class Brand
         }
       } return $found_brand;
   }
+  function addStore($store)
+  {
+    $GLOBALS['DB']->exec("INSERT INTO ")
+  }
 
 }
 
