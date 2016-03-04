@@ -24,9 +24,9 @@ class Brand
   }
   function save()
   {
-      $GLOBALS['DB']->exec(
+    $GLOBALS['DB']->exec(
       "INSERT INTO brands
-      (name, id)
+      (name)
       VALUES
       ('{$this->getName()}');"
     );
@@ -34,7 +34,9 @@ class Brand
   }
   static function getAll()
   {
-    $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");
+    $returned_brands = $GLOBALS['DB']->query(
+      "SELECT * FROM brands;"
+    );
     $brands = array();
     foreach($returned_brands as $brand){
       $name = $brand['name'];
@@ -46,8 +48,7 @@ class Brand
   }
   static function deleteAll()
   {
-    $GLOBALS['DB']->exec(
-    "DELETE FROM brands");
+    $GLOBALS['DB']->exec("DELETE FROM brands;");
   }
 
 }
