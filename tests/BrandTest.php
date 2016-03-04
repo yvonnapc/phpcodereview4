@@ -86,10 +86,52 @@
      //Assert
      $this->assertEquals([], $result);
    }
+   function test_find()
+   {
+     //Arrange
+     $name = "Clark's";
+     $test_brand = new Brand($name);
+     $test_brand->save();
+     //Act
+     $result = Brand::find($test_brand->getId());
+     //Assert
+     $this->assertEquals($test_brand, $result);
+   }
+   function test_addStore()
+   {
+     //Arrange
+     $name = "Clark's";
+     $test_brand = new Brand($name);
+     $test_brand->save();
 
+     $name = "Barney's";
+     $test_store = new Store($name);
+     $test_store->save();
+     //Act
+     $test_brand->addStore($test_store);
+     $result = $test_brand->getStores();
+     //Assert
+     $this->assertEquals([$test_store], $result);
+   }
+   function test_getStores()
+   {
+     //Arrange
+     $name = "Clark's";
+     $test_brand = new Brand($name);
+     $test_brand->save();
 
+     $name = "Barney's";
+     $test_store = new Store($name);
+     $test_store->save();
 
-
-
+     $name = "Mall Shoes";
+     $test_store2 = new Store($name);
+     $test_store2->save();
+     //Act
+     $test_brand->addStore($test_store);
+     $test_brand->addStore($test_store2);
+     //Assert
+     $this->assertEquals($test_brand->getStores(), [$test_store, $test_store2]);
+   }
   }
  ?>
