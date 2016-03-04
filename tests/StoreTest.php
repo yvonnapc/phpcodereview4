@@ -98,6 +98,42 @@
       //Assert
       $this->assertEquals($test_store, $result);
     }
+    function test_addBrand()
+    {
+      //Arrange
+      $name = "Barney's";
+      $test_store = new Store($name);
+      $test_store->save();
+
+      $name = "Nike";
+      $test_brand = new Brand($name);
+      $test_brand->save();
+      //Act
+      $test_store->addBrand($test_brand);
+      $result = $test_store->getBrands();
+      //Assert
+      $this->assertEquals([$test_brand], $result);
+    }
+    function test_getBrands()
+    {
+      //Arrange
+      $name = "Barney's";
+      $test_store = new Store($name);
+      $test_store->save();
+
+      $name = "Nike";
+      $test_brand = new Brand($name);
+      $test_brand->save();
+
+      $name2 = "Adidas";
+      $test_brand2 = new Brand($name);
+      $test_brand->save();
+      //Act
+      $test_store->addBrand($test_brand);
+      $test_store->addBrand($test_brand2);
+      //Assert
+      $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
+    }
 
   }
 
