@@ -63,7 +63,7 @@ class Brand
   }
   function addStore($store)
   {
-    $GLOBALS['DB']->exec("INSERT INTO ")
+    $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ( {$this->getId()}, {$store->getId()});");
   }
 
 }
