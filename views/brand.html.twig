@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/styles.css'>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <h1> {{ brand.getName }}
+        <h3>Stores that carry this brand:</h3>
+        {% if stores is not empty %}
+              <ul>
+                  {%for store in stores%}
+                  <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
+                  {%endfor%}
+              </ul>
+          {% endif %}
+
+          <h3>Add a store</h3>
+              <div class="row">
+                  <form action="/brand/{{ brand.getId }}/add_store" method="post">
+                      <input id="brand_id" = name="brand_id" type="hidden" value="{{ brand.getId }}">
+
+                      <div class="col-sm-6">
+                          <label>Add Store</label>
+                          <select name="store_id" type="text" required>
+                                  <option value="" disabled selected>Choose a store to add</option>
+                              {% for store in all_stores %}
+                                  <option value="{{ store.getId }}">{{ store.getName }}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+              </div>
+                      <button type="submit" class="btn btn-success">Add Store</button>
+                  </form>
+    </div>
+
+  </body>
+</html>
