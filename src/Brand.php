@@ -26,7 +26,7 @@ class Brand
   {
       $GLOBALS['DB']->exec(
       "INSERT INTO brands
-      (name)
+      (name, id)
       VALUES
       ('{$this->getName()}');"
     );

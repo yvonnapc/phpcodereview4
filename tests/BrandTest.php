@@ -48,6 +48,7 @@
      $test_brand->save();
      //Act
      $result = Brand::getAll();
+     var_dump($result);
      //Assert
      $this->assertEquals([$test_brand], $result);
    }
@@ -55,11 +56,13 @@
    {
      //Arrange
      $name = "Clark's";
-     $test_brand = new Brand($name);
+     $id = 1;
+     $test_brand = new Brand($name, $id);
      $test_brand->save();
 
      $name = "Doc Marten's";
-     $test_brand2 = new Brand($name);
+     $id = 2;
+     $test_brand2 = new Brand($name, $id);
      $test_brand2->save();
      //Act
      $result = Brand::getAll();
