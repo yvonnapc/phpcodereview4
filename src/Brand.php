@@ -22,6 +22,7 @@ class Brand
   {
     return $this->id;
   }
+
 }
 
  ?>
