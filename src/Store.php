@@ -75,9 +75,6 @@ class Store
     }
     return $result_brands;
   }
-
 }
-
-
 
  ?>
