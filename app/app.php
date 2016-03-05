@@ -57,9 +57,12 @@
      return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brand, 'all_brands' => $all_brands));
    });
 
-
-
-
+   $app->patch("/store/{id}/update", function($id) use ($app) {
+        $store = Store::find($id);
+        $new_name = $_POST['new_name'];
+        $store->update($new_name);
+        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
+    });
 
 //BRAND ROUTES
    $app->get("/brands", function() use($app){

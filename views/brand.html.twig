@@ -9,7 +9,6 @@
   <body>
     <div class="container">
       <h1> {{ brand.getName }}
-        <h3>Stores that carry this brand:</h3>
         {% if stores is not empty %}
               <ul>
                   {%for store in stores%}
@@ -18,7 +17,6 @@
               </ul>
           {% endif %}
 
-          <h3>Add a store</h3>
               <div class="row">
                   <form action="/brand/{{ brand.getId }}/add_store" method="post">
                       <input id="brand_id" = name="brand_id" type="hidden" value="{{ brand.getId }}">

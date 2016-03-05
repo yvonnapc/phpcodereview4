@@ -50,7 +50,7 @@
       $test_store->save();
       $result = Store::getAll();
       //Assert
-      $this->assertEquals([$test_store], $result);
+      $this->assertEquals($test_store, $result[0]);
     }
     function test_getAll()
     {
@@ -125,14 +125,18 @@
       $test_brand = new Brand($name);
       $test_brand->save();
 
+
       $name2 = "Adidas";
-      $test_brand2 = new Brand($name);
-      $test_brand->save();
+      $test_brand2 = new Brand($name2);
+      $test_brand2->save();
+
       //Act
       $test_store->addBrand($test_brand);
       $test_store->addBrand($test_brand2);
+      $result = $test_store->getBrands();
+
       //Assert
-      $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
+      $this->assertEquals([$test_brand, $test_brand2], $result);
     }
 
   }
