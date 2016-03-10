@@ -106,7 +106,7 @@
      $test_brand = new Brand($name, $id);
      $test_brand->save();
 
-     $name2 = "Doc Martens";
+     $name2 = "Barneys";
      $id2 = 1;
      $test_store = new Store($name2, $id2);
      $test_store->save();
@@ -124,20 +124,22 @@
      $test_brand = new Brand($name, $id);
      $test_brand->save();
 
-     $name = "Doc Martens";
-     $id = null;
-     $test_store = new Store($name, $id);
+     $name2 = "Nordstrom";
+     $id2 = null;
+     $test_store = new Store($name2, $id2);
      $test_store->save();
 
-     $name = "Mall Shoes";
-     $id2 = null;
-     $test_store2 = new Store($name, $id2);
+     $name3 = "Barneys";
+     $id3 = null;
+     $test_store2 = new Store($name3, $id3);
      $test_store2->save();
      //Act
      $test_brand->addStore($test_store);
      $test_brand->addStore($test_store2);
+     $result = $test_brand->getStores();
+    
      //Assert
-     $this->assertEquals($test_brand->getStores(), [$test_store, $test_store2]);
+     $this->assertEquals([$test_store, $test_store2], $result);
    }
   }
  ?>

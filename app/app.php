@@ -54,7 +54,7 @@
      $store->addBrand($brand);
      $brands = $store->getBrands();
      $all_brands = Brand::getAll();
-     return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brand, 'all_brands' => $all_brands));
+     return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brands, 'all_brands' => $all_brands));
    });
 
    $app->patch("/store/{id}/update", function($id) use ($app) {

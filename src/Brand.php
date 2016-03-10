@@ -67,20 +67,20 @@ class Brand
   }
   function getStores()
   {
-    $returned_stores = $GLOBALS['DB']->query("SELECT stores.* FROM brands_stores
-      JOIN brand_stores ON (brands.id = brands_stores.brand_id)
+    $returned_stores = $GLOBALS['DB']->query("SELECT stores.* FROM brands
+      JOIN brands_stores ON (brands.id = brands_stores.brand_id)
       JOIN stores ON (brands_stores.store_id = stores.id)
       WHERE brands.id = {$this->getId()};"
     );
 
-    $returned_stores = array();
+    $stores = array();
     foreach($returned_stores as $store){
       $name = $store['name'];
       $id = $store['id'];
       $new_store = new Store($name, $id);
-      array_push($returned_stores, $new_store);
+      array_push($stores, $new_store);
     }
-    return $returned_stores;
+    return $stores;
   }
 
 }

@@ -13,7 +13,7 @@
               <ul>
                   {%for store in stores%}
                   <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
-                  {%endfor%}
+                  {% endfor %}
               </ul>
           {% endif %}
 
